@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="Member">
+	
+	<select id="allMember" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email,company, contact, auth
+		from member
+		order by id asc
+	</select>
+	<select id="BizMems" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email,company, contact, auth
+		from member
+		where auth=1
+		order by id asc
+	</select>
+	<select id="NomalMems" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email,company, contact, auth
+		from member
+		where auth=2
+		order by id asc
+	</select>
+	<select id="BanMems" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email,company, contact, auth
+		from member
+		where auth=3
+		order by id asc
+	</select>
+	<select id="Managers" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email,company, contact, auth
+		from member
+		where auth=0
+		order by id asc
+	</select>
+
+	<select id="idcheck" parameterType="java.lang.String" resultType="Integer">
+		select count(*)
+		from member
+		where id=#{id}
+	</select>
+
+	<insert id="addmember" parameterType="ITzy.admin.dto.MemberDto">
+		insert into member(id,name, company, pwd, email, contact, auth)
+		values(#{id},#{name}, #{company}, #{pwd}, #{email}, #{contact},0) <!-- 관리자 0 -->
+	</insert>
+
+	<select id="login" parameterType="ITzy.admin.dto.MemberDto" resultType="ITzy.admin.dto.MemberDto">
+		select id, name, email
+		from member
+		where id=#{id} and pwd=#{pwd} and auth=0 <!-- 관리자 0 -->
+	</select>
+	
+	<update id="modifyName"  parameterType="ITzy.admin.dto.MemberDto">
+		update member set name=#{name} where id=#{id}
+	</update>
+	
+	
+	<update id="modifyEmail"  parameterType="ITzy.admin.dto.MemberDto">
+		update member set email=#{email} where id=#{id}
+	</update>
+	
+	
+	<update id="modifyContact"  parameterType="ITzy.admin.dto.MemberDto">
+		update member set contact=#{contact} where id=#{id}
+	</update>
+	
+	<update id="modifyAuth"  parameterType="ITzy.admin.dto.MemberDto">
+		update member set auth=#{auth} where id=#{id}
+	</update>
+	
+	
+	
+</mapper>

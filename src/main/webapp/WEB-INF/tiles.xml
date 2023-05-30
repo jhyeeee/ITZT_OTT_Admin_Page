@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="main" template="/WEB-INF/views/layout/layout1.jsp">
+		<put-attribute name="logo" value="/WEB-INF/views/logo.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+ 		<put-attribute name="menu" value="/WEB-INF/views/menu.jsp" />
+ 		<put-attribute name="content" value="" /> 
+	</definition>
+	
+	
+	
+	<definition name="calendar" extends="main">
+ 		<put-attribute name="content" value="/WEB-INF/views/calendar/calendar.jsp" />
+	</definition>
+
+
+	<definition name="caldetail" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/calendar/caldetail.jsp" />
+	</definition>
+	
+	<definition name="callist" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/calendar/callist.jsp" />
+	</definition>
+	
+	<definition name="calupdate" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/calendar/calupdate.jsp" />
+	</definition>
+	
+	<definition name="calwrite" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/calendar/calwrite.jsp" />
+	</definition>
+
+
+	<definition name="members" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/main/members.jsp" />
+	</definition>
+
+	<definition name="BizMems" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/main/members.jsp" />
+	</definition>
+
+	<definition name="NomalMems" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/main/members.jsp" />
+	</definition>
+
+	<definition name="BanMems" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/main/members.jsp" />
+	</definition>
+
+	<definition name="Managers" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/main/members.jsp" />
+	</definition>
+	
+	
+	<!--  -->
+	
+	<definition name="pps" extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/pps/pps.jsp" />
+	</definition>
+	
+	<definition name="bbs"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views//pps/bbs.jsp" />
+	</definition>
+
+	<definition name="nbs"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/pps/nbs.jsp" />
+	</definition>
+	
+	
+	<!--  -->
+	<definition name="qnalist"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/qna/qnalist.jsp" />
+	</definition>
+	
+	<definition name="hoewonQ"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/qna/qnalist.jsp" />
+	</definition>
+	
+	<definition name="gongoQ"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/qna/qnalist.jsp" />
+	</definition>
+	
+	<definition name="orewQ"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/qna/qnalist.jsp" />
+	</definition>
+	
+	<definition name="ansComplete"  extends="main">
+		<put-attribute name="content" value="/WEB-INF/views/qna/qnalist.jsp" />
+	</definition>
+
+
+</tiles-definitions>
+

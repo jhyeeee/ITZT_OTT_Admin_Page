@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Qna">
+
+<!-- 답변전의 일반질문 리스트  -->
+	<select id="ilbanQ" resultType="ITzy.admin.dto.QnaDto">
+		select seq, id, title,content,wdate,ansdate,answer
+		from qna where qtype = "일반질문" and ansdate is null
+		order by wdate asc
+	</select>
+<!-- 답변전의 회원문의 리스트  -->
+	<select id="hoewonQ" resultType="ITzy.admin.dto.QnaDto">
+		select seq, id, title,content,wdate,ansdate,answer
+		from qna where qtype = "회원문의" and ansdate is null
+		order by wdate asc
+	</select>
+<!-- 답변전의 공고문의 리스트  -->
+	<select id="gongoQ" resultType="ITzy.admin.dto.QnaDto">
+		select seq, id, title,content,wdate,ansdate,answer
+		from qna where qtype = "공고문의" and ansdate is null
+		order by wdate asc
+	</select>
+<!-- 답변전의 오류신고 리스트  -->
+	<select id="orewQ" resultType="ITzy.admin.dto.QnaDto">
+		select seq, id, title,content,wdate,ansdate,answer
+		from qna where qtype = "오류신고" and ansdate is null
+		order by wdate asc
+	</select>
+	
+<!-- 답변완료 리스트  -->
+	<select id="ansComplete" resultType="ITzy.admin.dto.QnaDto">
+	select seq, id, title,content,wdate,ansdate,answer
+	from qna
+	where ansdate is not null
+	order by ansdate desc
+	</select>
+	
+	
+
+	<update id="addAns" parameterType="ITzy.admin.dto.QnaDto">
+
+		update qna set ref =#{seq},mngid=#{mngid}, answer=#{answer}, ansdate=now() where seq=#{seq}
+
+	</update>
+
+
+</mapper>

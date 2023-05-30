@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Pps">
+
+<!-- 포트폴리오 최신순 리스트 -->
+	<select id="ppsList" resultType="ITzy.admin.dto.PpsDto">
+		select seq,id, title,content,regdate,del
+		from pps order by regdate asc
+	</select>
+	
+<!-- 포트폴리오 숨김 처리 -->	
+	<update id="delPps" parameterType="ITzy.admin.dto.PpsDto">
+	update pps set del=1 where seq=#{seq}
+	</update>
+	
+<!-- 포트폴리오 노출 처리 -->	
+	<update id="showPps" parameterType="ITzy.admin.dto.PpsDto">
+	update pps set del=0 where seq=#{seq}
+	</update>
+
+<!-- 특정아이디 정보보기 -->	
+	<select id="viewInfo" parameterType="java.lang.String" resultType="ITzy.admin.dto.MemberDto">
+	select DISTINCT(p.id) as id,name, contact,email
+	from member m inner join pps p
+	on m.id = p.id
+	where p.id=#{id}
+	</select>
+
+</mapper>
